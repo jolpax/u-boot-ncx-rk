@@ -93,6 +93,12 @@ __weak int rk_board_init(void)
 
 #define MAX_ETHERNET	0x2
 
+#ifdef CONFIG_TARGET_NCX_RK3568
+static int rockchip_set_ethaddr(void)
+{
+	 return 0;
+}
+#else
 static int rockchip_set_ethaddr(void)
 {
 	__maybe_unused bool need_write = false;
@@ -143,6 +149,7 @@ static int rockchip_set_ethaddr(void)
 #endif
 	return 0;
 }
+#endif
 #endif
 
 #ifdef CONFIG_ROCKCHIP_SET_SN

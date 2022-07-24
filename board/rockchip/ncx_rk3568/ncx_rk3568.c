@@ -11,6 +11,8 @@
 #include <i2c_eeprom.h>
 #include <netdev.h>
 
+#define RK3568_MAC_EEPROM_DEBUG    0
+#define AT24_MAC_OFFSET                      0x9A
 
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -36,36 +38,47 @@ int board_usb_init(int index, enum usb_init_type init)
 }
 #endif
 
+void ncx_print_eeprom_mac_addr(const u8 *addr)
+{
+		int i=0;
+		printf("ncx mac address read from eeprom: ");
+		for (i=0; i<6;i++)
+			printf ("%x: ", ethaddr[i]);
+		printf("\n");
+}
+
 static int get_ethaddr_from_eeprom(u8 *addr)
 {
 	int ret;
 	int read_val;
 	struct udevice *dev;
-	printf("get_ethaddr_from_eeprom\n");
+
 	ret = uclass_first_device_err(UCLASS_I2C_EEPROM, &dev);
 	if (ret)
 	{
-		printf("eeprom : driver binding is failed\n");
+#if RK3568_MAC_EEPROM_DEBUG
+		printf("ncx mac eeprom : driver binding is failed\n");
+#endif
 		return ret;
 	}
-	read_val = i2c_eeprom_read(dev, 0x9A, addr, 6);
-	printf("eeprom:No. of bytes read  = %d\n", read_val);
-	return read_val;
+	return i2c_eeprom_read(dev, AT24_MAC_OFFSET, addr, 6);
+	
 }
 
 int ncx_rk3568_board_late_init(void)
 {
 	u8 ethaddr[6];
-    printf("ncx_rk3568_board_late_init\n");
+
 	if (get_ethaddr_from_eeprom(ethaddr))
 	{
-		printf("eeprom: Exiting\n");
 		return 0;
 	}
 	if (is_valid_ethaddr(ethaddr))
 	{
-		printf("eeprom:Eth addr is valid \n");
-		eth_env_set_enetaddr("ethaddr", ethaddr);
+#if RK3568_MAC_EEPROM_DEBUG
+		ncx_print_eeprom_mac_addr(ethaddr);
+#endif
+		eth_env_set_enetaddr("eth1addr", ethaddr);
 	}
 
 	return 0;
@@ -73,6 +86,5 @@ int ncx_rk3568_board_late_init(void)
 
 int rk_board_late_init(void)
 {
-	 printf("Entering rk_board_late_init\n");
      return ncx_rk3568_board_late_init();
 }
