@@ -43,7 +43,7 @@ void ncx_print_eeprom_mac_addr(const u8 *addr)
 		int i=0;
 		printf("ncx mac address read from eeprom: ");
 		for (i=0; i<6;i++)
-			printf ("%x: ", ethaddr[i]);
+			printf ("%x: ", addr[i]);
 		printf("\n");
 }
 
