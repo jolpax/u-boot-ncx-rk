@@ -58,6 +58,8 @@ struct env_driver *env_driver_lookup_default(void)
 {
 	enum env_location loc = env_get_default_location();
 	struct env_driver *drv;
+	
+	printf("Debug 1 : location = %d\n",loc );
 
 	drv = env_driver_lookup(loc);
 	if (!drv) {
