@@ -82,12 +82,11 @@
 	"bank1=b\0" \
         "bank_select_files="  \
         "if  test ${bank1} = a; then " \
-               "setenv bootars 0" \
+			    "echo Booting Bank B;" \
         "else" \
                "echo Booting Bank B;"	      \
         "fi; \0" \
 
-/*
 #define NCX_SLOT_SETTINGS  \
 		"bank=b\0" \
         "bank_select_files="  \
@@ -96,7 +95,7 @@
         "else" \
                "echo Booting Bank B;"	      \
         "fi; \0" \
-*/
+
 #include <config_distro_bootcmd.h>
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
