@@ -79,17 +79,17 @@
 	"kernel_addr_r=0x00a80000\0" \
 	"kernel_addr_c=0x04080000\0" \
 	"ramdisk_addr_r=0x0a200000\0" \
-	"bank1=b\0" \
+	"bank1=a" \
         "bank_select_files="  \
         "if  test ${bank1} = a; then " \
-			    "echo Booting Bank B;" \
-        "else" \
+			    "echo Booting Bank A;" \
+        "else " \
                "echo Booting Bank B;"	      \
         "fi; \0" \
 
 #define NCX_SLOT_SETTINGS  \
-		"bank=b\0" \
-        "bank_select_files="  \
+		"bankz=b\0" \
+        "bank_select_filesz="  \
         "if  test ${bank} = a; then " \
                "setenv bootars 0" \
         "else" \
