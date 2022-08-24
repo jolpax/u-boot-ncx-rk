@@ -71,13 +71,6 @@
 #define CONFIG_USB_FUNCTION_MASS_STORAGE
 #define CONFIG_ROCKUSB_G_DNL_PID	0x350a
 
-#define NCX_SLOT_SETTINGS \
-	"bank=b" \
-	"bank_select_files=if test ${bank} = a; then echo Booting Bank A ;" \
-	"setenv bootars console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait atmel.pm_modes=standby,ulp0; setenv kernel_boot kernel_a; setenv itb_boot itb_a;"\
-	"else" \
-	"echo Booting Bank B;" \
-	
 #define ENV_MEM_LAYOUT_SETTINGS \
 	"scriptaddr=0x00c00000\0" \
 	"pxefile_addr_r=0x00e00000\0" \
