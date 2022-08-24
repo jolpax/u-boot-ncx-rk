@@ -21,16 +21,28 @@
 #define CONFIG_ENV_OFFSET                    0x003f8000
 #define CONFIG_ENV_SIZE                         0x40000
 
-#define NCX_SLOT_SETTINGS  \
-		"bank=b"\
-        "bank_select_files=" \
-        "if test ${bank} = a; then " \
-                "setenv bootargs console=ttyS0,115200 root=/dev/mmcblk0p2;echo Boot from SLOT A;" \
-        "elif  test ${bank} = b; then " \
-                "echo Boot from SLOT B;" \
+#define ZAHID_DET_BOOTDEV \
+        "rkimg_bootdev=" \
+        "if mmc dev 1 && rkimgtest mmc 1; then " \
+                "setenv devtype mmc; setenv devnum 1; echo Boot from SDcard;" \
+        "elif mmc dev 0; then " \
+                "setenv devtype mmc; setenv devnum 0;" \
+        "elif mtd_blk dev 0; then " \
+                "setenv devtype mtd; setenv devnum 0;" \
+        "elif mtd_blk dev 1; then " \
+                "setenv devtype mtd; setenv devnum 1;" \
+        "elif mtd_blk dev 2; then " \
+                "setenv devtype mtd; setenv devnum 2;" \
+        "elif rknand dev 0; then " \
+                "setenv devtype rknand; setenv devnum 0;" \
+        "elif rksfc dev 0; then " \
+                "setenv devtype spinand; setenv devnum 0;" \
+        "elif rksfc dev 1; then " \
+                "setenv devtype spinor; setenv devnum 1;" \
         "else" \
-                "setenv zahid1 19;" \
+                "setenv devtype ramdisk; setenv devnum 0;" \
         "fi; \0"
+
 
 #undef CONFIG_BOOTCOMMAND
 #define CONFIG_BOOTCOMMAND RKIMG_BOOTCOMMAND
