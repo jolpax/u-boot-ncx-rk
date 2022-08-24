@@ -25,10 +25,10 @@
 		"bank=b\0" \
         "bank_select_files="  \
         "if  test ${bank} = a; then " \
-                setenv bootargs console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait atmel.pm_modes=standby,ulp0; setenv kernel_boot kernel_a; setenv itb_boot itb_a;" \
+               "setenv bootargs console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait atmel.pm_modes=standby,ulp0; setenv kernel_boot kernel_a; setenv itb_boot itb_a;" \
         "else" \
                "echo Booting Bank B;"	      \
-        "fi; \0" \
+        "fi; \0" 
 
 
 #undef CONFIG_BOOTCOMMAND
