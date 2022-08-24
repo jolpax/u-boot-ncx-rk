@@ -9,7 +9,10 @@
 
 #include <configs/rk3568_common.h>
 
-
+#define CONFIG_ENV_IS_IN_MMC
+#define CONFIG_SYS_MMC_ENV_DEV          1
+#define CONFIG_ENV_OFFSET               0x16384
+#define CONFIG_ENV_SIZE                 0x40000
 
 #ifndef CONFIG_SPL_BUILD
 
@@ -58,8 +61,6 @@
 	"boot part boot;" \
 	"rootfs partubi rootfs;" \
 	"userdata partubi userdata\0"
-
-#define CONFIG_SYS_MMC_ENV_DEV          1
 
 #endif /* CONFIG_ANDROID_AB */
 #endif /* CONFIG_SPL_BUILD */
