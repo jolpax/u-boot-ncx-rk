@@ -78,7 +78,12 @@
 	"kernel_addr_no_low_bl32_r=0x00280000\0" \
 	"kernel_addr_r=0x00a80000\0" \
 	"kernel_addr_c=0x04080000\0" \
-	"ramdisk_addr_r=0x0a200000\0"
+	"ramdisk_addr_r=0x0a200000\0"\
+	"bank=b\0" \
+        "bank_select_files=if test ${bank} = a; then echo Booting Bank A ;\0" \
+        "setenv bootars console=ttyS0,115200 root=/dev/mmcblk0p2 rw rootfstype=ext4 rootwait atmel.pm_modes=standby,ulp0; setenv kernel_boot kernel_a; setenv itb_boot itb_a;\0"\
+        "else\0" \
+        "echo Booting Bank B;\0" 
 
 #include <config_distro_bootcmd.h>
 
