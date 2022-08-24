@@ -21,15 +21,6 @@
 #define CONFIG_ENV_OFFSET                    0x003f8000
 #define CONFIG_ENV_SIZE                         0x40000
 
-#define NCX_SLOT_SETTINGS \
-        "basefiles=" \
-        "if mmc dev 1 && rkimgtest mmc 1; then " \
-                "setenv devtype mmc; setenv devnum 1; echo Boot from SDcard;" \
-        "elif mmc dev 0; then " \
-                "setenv devtype mmc; setenv devnum 0;" \
-        "fi; \0"
-
-
 #undef CONFIG_BOOTCOMMAND
 #define CONFIG_BOOTCOMMAND RKIMG_BOOTCOMMAND
 
