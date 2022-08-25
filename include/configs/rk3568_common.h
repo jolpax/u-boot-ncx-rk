@@ -78,23 +78,15 @@
 	"kernel_addr_no_low_bl32_r=0x00280000\0" \
 	"kernel_addr_r=0x00a80000\0" \
 	"kernel_addr_c=0x04080000\0" \
-	"ramdisk_addr_r=0x0a200000\0" \
-	"bank1=a\0" \
-        "bank_select_files="  \
-        "if test ${bank1} = a; then " \
-			    "echo Booting Bank A;" \
-        "else " \
-               "echo Booting Bank B;\0"	      \
-        "fi; \0" \
+	"ramdisk_addr_r=0x0a200000\0" 
 
-#define NCX_SLOT_SETTINGS  \
-		"bankz=b\0" \
-        "bank_select_filesz="  \
+#define NCX_SLOT_SETTINGS \
+        "bankz_sel=" \
         "if test ${bank} = a; then " \
-               "setenv bootars 0\0" \
-        "else\0" \
-               "echo Booting Bank B;\0"	      \
-        "fi; \0" \
+                "echo Boot from Bank A;" \
+        "else" \
+                "echo Boot from Bank B;" \
+        "fi; \0"
 
 #include <config_distro_bootcmd.h>
 
