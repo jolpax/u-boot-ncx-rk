@@ -84,7 +84,7 @@
         "bankz_sel=" \
         "if test ${bank} = a; then " \
                 "echo Boot from Bank A;" \
-        "else" \
+       "elif test ${bank} = b; then " \
                 "echo Boot from Bank B;" \
         "fi; \0"
 
