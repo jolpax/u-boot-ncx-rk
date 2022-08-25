@@ -23,7 +23,7 @@
 #ifdef CONFIG_SUPPORT_USBPLUG
 #define CONFIG_SYS_TEXT_BASE		0x00000000
 #else
-#define CONFIG_SYS_TEXT_BASE		0x00a00000
+#define CONFIG_SYS_TEXT_BASE		0x00800000  
 #endif
 
 #define CONFIG_SYS_INIT_SP_ADDR		0x00c00000
@@ -78,14 +78,7 @@
 	"kernel_addr_no_low_bl32_r=0x00280000\0" \
 	"kernel_addr_r=0x00a80000\0" \
 	"kernel_addr_c=0x04080000\0" \
-	"ramdisk_addr_r=0x0a200000\0" \
-	"bank=b\0"\
-    "bankz_sel=" \
-    "if test ${bank} = a; then " \
-            "echo Boot from Bank A;" \
-    "elif test ${bank} = b; then " \
-            "echo Boot from Bank B;" \
-    "fi; \0"	
+	"ramdisk_addr_r=0x0a200000\0" 
 
 #define NCX_SLOT_SETTINGS \
         "bankd_sel=" \
