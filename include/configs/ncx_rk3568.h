@@ -27,7 +27,7 @@
 #ifdef CONFIG_USB_FUNCTION_DFU
 #define CONFIG_SET_DFU_ALT_INFO
 #endif
-
+/*
 #define NCX_SLOT_SETTINGS \
 	"bank=a\0"   \
         "banksel=" \
@@ -38,7 +38,7 @@
                 "echo Boot from Bank B; " \
 				"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p6 rw rootwait ; \" " \
         "fi; \0"
-		
+	*/	
 #define DFU_ALT_BOOT_EMMC \
 	"gpt raw 0x0 0x20000;" \
 	"loader raw 0x20000 0xE0000;"\

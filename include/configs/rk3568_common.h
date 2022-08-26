@@ -79,13 +79,20 @@
 	"kernel_addr_r=0x00a80000\0" \
 	"kernel_addr_c=0x04080000\0" \
 	"ramdisk_addr_r=0x0a200000\0" \
-	"bank3=a\0"   \
+	"bank=z\0"   \
+	"banksel=" \
+	"if test ${bank} = a; then " \
+			"echo Boot from Bank A; " \
+			"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p3 rw rootwait ; \" " \
+   "elif test ${bank} = b; then " \
+			"echo Boot from Bank B; " \
+			"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p6 rw rootwait ; \" " \
+	"fi; \0"
 
 #include <config_distro_bootcmd.h>
 
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	ENV_MEM_LAYOUT_SETTINGS \
-	NCX_SLOT_SETTINGS \
 	"partitions=" PARTS_RKIMG \
 	ROCKCHIP_DEVICE_SETTINGS \
 	RKIMG_DET_BOOTDEV \
