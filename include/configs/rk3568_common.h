@@ -89,6 +89,15 @@
 
 #include <config_distro_bootcmd.h>
 
+#define NCX_SLOT_SETTINGS \
+		"bank1=a\0"   \
+        "bankd_sel=" \
+        "if test ${bank1} = a; then " \
+                "echo Boot from Bank A;" \
+       "elif test ${bank1} = b; then " \
+                "echo Boot from Bank B;" \
+        "fi; \0"
+
 #define CONFIG_EXTRA_ENV_SETTINGS \
 	ENV_MEM_LAYOUT_SETTINGS \
 	"partitions=" PARTS_RKIMG \

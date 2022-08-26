@@ -62,13 +62,6 @@
 	"rootfs partubi rootfs;" \
 	"userdata partubi userdata\0"
 
-#define NCX_SLOT_SETTINGS \
-        "bankd_sel=" \
-        "if test ${bank} = a; then " \
-                "echo Boot from Bank A;" \
-       "elif test ${bank} = b; then " \
-                "echo Boot from Bank B;" \
-        "fi; \0"
 		
 #endif /* CONFIG_ANDROID_AB */
 #endif /* CONFIG_SPL_BUILD */
