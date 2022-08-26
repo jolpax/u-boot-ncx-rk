@@ -79,21 +79,11 @@
 	"kernel_addr_r=0x00a80000\0" \
 	"kernel_addr_c=0x04080000\0" \
 	"ramdisk_addr_r=0x0a200000\0" \
-	"bankd_sel=" \
-    "if test ${bank} = a; then " \
-        "echo Boot from Bank A;" \
-    "elif test ${bank} = b; then " \
-        "echo Boot from Bank B;" \
-    "fi; \0"
-
-#define NCX_SLOT_SETTINGS \
-        "bankz_sel=" \
+        "banke_sel=" \
         "if test ${bank} = a; then " \
-				"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p3 rw rootwait ; \" " \
                 "echo Boot from Bank A;" \
        "elif test ${bank} = b; then " \
                 "echo Boot from Bank B;" \
-				"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p6 rw rootwait ; \" " \
         "fi; \0"
 
 #include <config_distro_bootcmd.h>

@@ -62,15 +62,12 @@
 	"rootfs partubi rootfs;" \
 	"userdata partubi userdata\0"
 
-
 #define NCX_SLOT_SETTINGS \
-        "bankz_sel=" \
+        "bankd_sel=" \
         "if test ${bank} = a; then " \
-				"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p3 rw rootwait ; \" " \
                 "echo Boot from Bank A;" \
        "elif test ${bank} = b; then " \
                 "echo Boot from Bank B;" \
-				"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p6 rw rootwait ; \" " \
         "fi; \0"
 		
 #endif /* CONFIG_ANDROID_AB */
