@@ -79,7 +79,7 @@
 	"kernel_addr_r=0x00a80000\0" \
 	"kernel_addr_c=0x04080000\0" \
 	"ramdisk_addr_r=0x0a200000\0" \
-	"bank=\0"   \
+	"bank=a"   \
 	"banksel=" \
 	"if test ${bank} = a; then " \
 			"echo Boot from Bank A;" \

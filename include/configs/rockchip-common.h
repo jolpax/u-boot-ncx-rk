@@ -164,13 +164,16 @@
 
 #if defined(CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE)
 #define RKIMG_BOOTCOMMAND			\
-	"run banksel; boot_android ${devtype} ${devnum};"
+	"run banksel; boot_android ${devtype} ${devnum};"\
+	"echo zahid1;" 
 #elif defined(CONFIG_FIT_SIGNATURE)
 #define RKIMG_BOOTCOMMAND			\
+	"echo zahid2 ;"      \
 	"run banksel; boot_fit;"
 #else
 #define RKIMG_BOOTCOMMAND			\
 	"run banksel; boot_android ${devtype} ${devnum};"	\
+	"echo zahid3 ;"      \
 	"boot_fit;"				\
 	"bootrkp;"				\
 	"run distro_bootcmd;"
