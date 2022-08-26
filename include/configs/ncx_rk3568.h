@@ -18,8 +18,6 @@
 		"stderr=serial,vidconsole\0"
 
 #define CONFIG_SYS_MMC_ENV_DEV		0
-#undef CONFIG_ENV_OFFSET
-#undef CONFIG_ENV_SIZE
 #define CONFIG_ENV_OFFSET                    0x003f8000
 #define CONFIG_ENV_SIZE                         0x40000
 
@@ -30,6 +28,17 @@
 #define CONFIG_SET_DFU_ALT_INFO
 #endif
 
+#define NCX_SLOT_SETTINGS \
+	"bank=a\0"   \
+        "banksel=" \
+        "if test ${bank} = a; then " \
+                "echo Boot from Bank A; " \
+				"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p3 rw rootwait ; \" " \
+       "elif test ${bank} = b; then " \
+                "echo Boot from Bank B; " \
+				"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p6 rw rootwait ; \" " \
+        "fi; \0"
+		
 #define DFU_ALT_BOOT_EMMC \
 	"gpt raw 0x0 0x20000;" \
 	"loader raw 0x20000 0xE0000;"\
