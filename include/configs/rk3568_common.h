@@ -82,11 +82,11 @@
 	"bank=z\0"   \
 	"banksel=" \
 	"if test ${bank} = a; then " \
-			"echo Boot from Bank A; " \
-			"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p3 rw rootwait ; \" " \
+			"echo Boot from Bank A;" \
+			"setenv bootargs  storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p3 rw rootwait ; " \
    "elif test ${bank} = b; then " \
-			"echo Boot from Bank B; " \
-			"setenv bootargs \"storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p6 rw rootwait ; \" " \
+			"echo Boot from Bank B;" \
+			"setenv bootargs storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p6 rw rootwait ;  " \
 	"fi; \0"
 
 #include <config_distro_bootcmd.h>
