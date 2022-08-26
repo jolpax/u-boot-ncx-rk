@@ -18,6 +18,8 @@
 		"stderr=serial,vidconsole\0"
 
 #define CONFIG_SYS_MMC_ENV_DEV		0
+#undef CONFIG_ENV_OFFSET
+#undef CONFIG_ENV_SIZE
 #define CONFIG_ENV_OFFSET                    0x003f8000
 #define CONFIG_ENV_SIZE                         0x40000
 
