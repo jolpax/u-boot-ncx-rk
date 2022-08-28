@@ -84,12 +84,15 @@
 	"if test ${slot} = a; then " \
 			"echo Boot from slot A;" \
 			"setenv bootargs  storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p3 rw rootwait ; " \
-	"elif test ${slot} = b; then " \
+			"setenv bootargs run banksel; $bootargs" \
+ 	"elif test ${slot} = b; then " \
 			"echo Boot from slot B;" \
 			"setenv bootargs storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p4 rw rootwait ;  " \
+			"setenv bootargs run banksel; $bootargs" \
 	"else "\
 	"echo default booting from A;" \
 	"setenv bootargs  storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p3 rw rootwait ; " \
+	"setenv bootargs run banksel; $bootargs" \
 	"fi; \0"
 
 #include <config_distro_bootcmd.h>
