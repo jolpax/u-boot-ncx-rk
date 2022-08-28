@@ -143,37 +143,39 @@
 #define RKIMG_DET_BOOTDEV \
 	"rkimg_bootdev=" \
 	"if mmc dev 1 && rkimgtest mmc 1; then " \
-		"run banksel;setenv devtype mmc; setenv devnum 1; echo Boot from SDcard;" \
+		"setenv devtype mmc; setenv devnum 1; echo Boot from SDcard;" \
 	"elif mmc dev 0; then " \
-		"run banksel;setenv devtype mmc; setenv devnum 0;" \
+		"setenv devtype mmc; setenv devnum 0;" \
 	"elif mtd_blk dev 0; then " \
-		"run banksel;setenv devtype mtd; setenv devnum 0;" \
+		"setenv devtype mtd; setenv devnum 0;" \
 	"elif mtd_blk dev 1; then " \
-		"run banksel;setenv devtype mtd; setenv devnum 1;" \
+		"setenv devtype mtd; setenv devnum 1;" \
 	"elif mtd_blk dev 2; then " \
-		"run banksel;setenv devtype mtd; setenv devnum 2;" \
+		"setenv devtype mtd; setenv devnum 2;" \
 	"elif rknand dev 0; then " \
-		"run banksel;setenv devtype rknand; setenv devnum 0;" \
+		"setenv devtype rknand; setenv devnum 0;" \
 	"elif rksfc dev 0; then " \
-		"run banksel;setenv devtype spinand; setenv devnum 0;" \
+		"setenv devtype spinand; setenv devnum 0;" \
 	"elif rksfc dev 1; then " \
-		"run banksel;setenv devtype spinor; setenv devnum 1;" \
+		"setenv devtype spinor; setenv devnum 1;" \
 	"else" \
-		"run banksel;setenv devtype ramdisk; setenv devnum 0;" \
+		"setenv devtype ramdisk; setenv devnum 0;" \
 	"fi; \0"
 
 #if defined(CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE)
 #define RKIMG_BOOTCOMMAND			\
+	"run banksel;"			        \							\
 	"boot_android ${devtype} ${devnum};"
 #elif defined(CONFIG_FIT_SIGNATURE)
 #define RKIMG_BOOTCOMMAND			\
+	"run banksel;"			        \							\
 	"boot_fit;"
 #else
 #define RKIMG_BOOTCOMMAND			\
+	"run banksel;"                          \
 	"boot_android ${devtype} ${devnum};"	\
 	"boot_fit;"				\
 	"bootrkp;"				\
-	"run banksel;"                          \
 	"run distro_bootcmd;"
 #endif
 
