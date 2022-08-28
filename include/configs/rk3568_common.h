@@ -88,7 +88,7 @@
 			"echo Boot from slot B;" \
 			"setenv bootargs storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p4 rw rootwait ;  " \
 	"else "\
-	"echo default booting from A" \
+	"echo default booting from A;" \
 	"setenv bootargs  storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk0p3 rw rootwait ; " \
 	"fi; \0"
 
