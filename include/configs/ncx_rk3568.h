@@ -23,9 +23,6 @@
 #define CONFIG_ENV_OFFSET                    0x003f8000
 #define CONFIG_ENV_SIZE                         0x40000
 
-
-#define h  10
-
 #undef RKIMG_BOOTCOMMAND
 #define RKIMG_BOOTCOMMAND			\
 	"run banksel;"                          \
