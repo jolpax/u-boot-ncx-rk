@@ -15,6 +15,7 @@
 #include <post.h>
 #include <u-boot/sha256.h>
 
+#define DEBUG 1
 DECLARE_GLOBAL_DATA_PTR;
 
 #define MAX_DELAY_STOP_STR 32
