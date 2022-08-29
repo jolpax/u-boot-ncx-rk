@@ -79,7 +79,7 @@
 	"kernel_addr_r=0x00a80000\0" \
 	"kernel_addr_c=0x04080000\0" \
 	"ramdisk_addr_r=0x0a200000\0" \
-	"bootargs=run banksel;  " \
+	"bootcmd=run banksel;\0" \
 	"slot=\0"   \
 	"banksel=" \
 	"if test ${slot} = a; then " \
