@@ -129,6 +129,7 @@ static void boot_devtype_init(void)
 	mmc_initialize(gd->bd);
 #endif
 	ret = rk_board_scan_bootdev();
+	run_command("banksel");
 	if (ret) {
 		/* Set default dev type/num if command not valid */
 		devtype = "mmc";
