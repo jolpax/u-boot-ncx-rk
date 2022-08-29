@@ -185,7 +185,7 @@
 	"boot_fit;"				\
 	"bootrkp;"				\
 	"run distro_bootcmd;"
-#endif
+
 
 #endif /* CONFIG_SPL_BUILD */
 
