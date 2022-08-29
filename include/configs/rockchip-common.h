@@ -170,11 +170,11 @@
 	"1boot_fit;"
 #else
 #define RKIMG_BOOTCOMMAND			\
-	"boot_android ${devtype} ${devnum};"	\
 	"run banksel;" \
-	"1boot_fit;"				\
-	"1bootrkp;"				\
-	"1run distro_bootcmd;"
+	"boot_android ${devtype} ${devnum};"	\
+	"boot_fit;"				\
+	"bootrkp;"				\
+	"run distro_bootcmd;"
 #endif
 
 #endif /* CONFIG_SPL_BUILD */
