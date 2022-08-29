@@ -24,7 +24,7 @@
 #define CONFIG_ENV_SIZE                         0x40000
 
 #undef RKIMG_BOOTCOMMAND
-#define RKIMG_BOOTCOMMAND			\
+#define RKIMG_BOOTCOMMAND1			\
 	"run banksel;"                          \
 	"boot_android ${devtype} ${devnum};"	\
 	"boot_fit;"				\
@@ -32,7 +32,7 @@
 	"run distro_bootcmd;"
 
 #undef CONFIG_BOOTCOMMAND
-#define CONFIG_BOOTCOMMAND  "run banksel;"
+#define CONFIG_BOOTCOMMAND  "run banksel;boot_android ${devtype} ${devnum};boot_fit;bootrkp;run distro_bootcmd;"
 
 #ifdef CONFIG_USB_FUNCTION_DFU
 #define CONFIG_SET_DFU_ALT_INFO
