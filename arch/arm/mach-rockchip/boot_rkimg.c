@@ -234,11 +234,11 @@ static int get_bootdev_type(void)
 		 */
 		if (env_exist("bootargs", "androidboot.mode=charger"))
 			snprintf(boot_options, sizeof(boot_options),
-				 "storagemedia=%s androidboot.storagemedia=%s",
+				 "run banksel; storagemedia=%s androidboot.storagemedia=%s",
 				 boot_media, boot_media);
 		else
 			snprintf(boot_options, sizeof(boot_options),
-				 "storagemedia=%s androidboot.storagemedia=%s "
+				 "run banksel; storagemedia=%s androidboot.storagemedia=%s "
 				 "androidboot.mode=normal ",
 				 boot_media, boot_media);
 #endif
