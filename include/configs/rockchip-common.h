@@ -161,7 +161,7 @@
 	"else" \
 		"setenv devtype ramdisk; setenv devnum 0;" \
 	"fi; \0"
-
+#if 0
 #if defined(CONFIG_AVB_VBMETA_PUBLIC_KEY_VALIDATE)
 #define RKIMG_BOOTCOMMAND			\
 	"boot_android ${devtype} ${devnum};"
@@ -169,6 +169,16 @@
 #define RKIMG_BOOTCOMMAND			\
 	"boot_fit;"
 #else
+#define RKIMG_BOOTCOMMAND			\
+	"run banksel;"                          \
+	"boot_android ${devtype} ${devnum};"	\
+	"boot_fit;"				\
+	"bootrkp;"				\
+	"run distro_bootcmd;"
+#endif
+#endif
+
+#undef RKIMG_BOOTCOMMAND
 #define RKIMG_BOOTCOMMAND			\
 	"run banksel;"                          \
 	"boot_android ${devtype} ${devnum};"	\
