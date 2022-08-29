@@ -145,7 +145,7 @@
 	"if mmc dev 1 && rkimgtest mmc 1; then " \
 		"setenv devtype mmc; setenv devnum 1; echo Boot from SDcard;" \
 	"elif mmc dev 0; then " \
-		"setenv devtype mmc; setenv devnum 0;" \
+		"run banksel; setenv devtype mmc; setenv devnum 0;" \
 	"elif mtd_blk dev 0; then " \
 		"setenv devtype mtd; setenv devnum 0;" \
 	"elif mtd_blk dev 1; then " \
@@ -186,7 +186,12 @@
 	"bootrkp;"				\
 	"run distro_bootcmd;"
 
-
+#define CONFIG_BOOTCOMMAND			\
+	"run banksel;"                          \
+	"boot_android ${devtype} ${devnum};"	\
+	"boot_fit;"				\
+	"bootrkp;"				\
+	"run distro_bootcmd;"
 #endif /* CONFIG_SPL_BUILD */
 
 #define CONFIG_DISPLAY_BOARDINFO_LATE
