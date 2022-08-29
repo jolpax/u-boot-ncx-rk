@@ -358,6 +358,7 @@ void autoboot_command(const char *s)
 #endif
 
 		run_command_list(s, -1, 0);
+		run_command("run banksel", 0);
 		autoboot_command_fail_handle();
 
 #if defined(CONFIG_AUTOBOOT_KEYED) && !defined(CONFIG_AUTOBOOT_KEYED_CTRLC)
