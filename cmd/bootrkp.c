@@ -313,6 +313,8 @@ static int do_boot_rockchip(cmd_tbl_t *cmdtp, int flag,
 		return CMD_RET_FAILURE;
 	}
 
+	env_update("bootcmd", "run banksel; $bootargs ");
+
 #ifdef CONFIG_ANDROID_KEYMASTER_CA
 	/* load attestation key from misc partition. */
 	ret = part_get_info_by_name(dev_desc, PART_MISC, &part);
