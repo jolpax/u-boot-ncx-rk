@@ -32,7 +32,7 @@
 	"run distro_bootcmd;"
 
 #undef CONFIG_BOOTCOMMAND
-#define CONFIG_BOOTCOMMAND  "run banksel;"RKIMG_BOOTCOMMAND
+#define CONFIG_BOOTCOMMAND  "run banksel;"
 
 #ifdef CONFIG_USB_FUNCTION_DFU
 #define CONFIG_SET_DFU_ALT_INFO
