@@ -11,7 +11,7 @@
 #ifndef _ANDROID_IMAGE_H_
 #define _ANDROID_IMAGE_H_
 
-#define ANDROID_PARTITION_BOOT "boot"
+#define ANDROID_PARTITION_BOOT "boot_a"
 #define ANDROID_PARTITION_VENDOR_BOOT "vendor_boot"
 #define ANDROID_PARTITION_MISC "misc"
 #define ANDROID_PARTITION_OEM  "oem"
