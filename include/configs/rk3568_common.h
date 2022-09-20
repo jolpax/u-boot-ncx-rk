@@ -78,19 +78,7 @@
 	"kernel_addr_no_low_bl32_r=0x00280000\0" \
 	"kernel_addr_r=0x00a80000\0" \
 	"kernel_addr_c=0x04080000\0" \
-	"ramdisk_addr_r=0x0a200000\0" \
-	"slot=\0"   \
-	"banksel=" \
-	"if test ${slot} = a; then " \
-			"echo Boot from slot A;" \
-			"setenv bootargs storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk1p3 rw rootwait ; " \
- 	"elif test ${slot} = b; then " \
-			"echo Boot from slot B;" \
-			"setenv bootargs storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk1p4 rw rootwait ;  " \
-	"else "\
-	"echo default booting from A;" \
-	"setenv bootargs  storagemedia=emmc androidboot.storagemedia=emmc androidboot.mode=normal root=/dev/mmcblk1p3 rw rootwait ; " \
-	"fi; \0"
+	"ramdisk_addr_r=0x0a200000\0"
 
 #include <config_distro_bootcmd.h>
 
