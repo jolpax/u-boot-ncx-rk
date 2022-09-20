@@ -203,7 +203,7 @@ static int android_bootloader_get_fdt(const char *part_name,
 
 	part_num = part_get_info_by_name(dev_desc, part_name, &part_info);
 	if (part_num < 0) {
-		printf("ANDROID: Could not find partition \"%s\"\n", part_name);
+		printf("ANDROID:  Zahid Could not find partition \"%s\"\n", part_name);
 		return -1;
 	}
 
@@ -893,7 +893,7 @@ int android_image_load_by_partname(struct blk_desc *dev_desc,
 	//part_num = part_get_info_by_name(dev_desc, boot_partname, &boot_part);
 	part_num = part_get_info_by_name(dev_desc, "boot_a", &boot_part);
 	if (part_num < 0) {
-		printf("%s: Can't find part: %s\n", __func__, boot_partname);
+		printf("%s:  zahid: Can't find part: %s\n", __func__, boot_partname);
 		return -1;
 	}
 	debug("ANDROID: Loading kernel from \"%s\", partition %d.\n",
