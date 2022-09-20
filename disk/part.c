@@ -689,6 +689,9 @@ static int part_get_info_by_name_option(struct blk_desc *dev_desc,
 	int none_slot_try = 1;
 	int ret, i;
 
+	printf("info_slot = %s\n", info->name);
+	printf("name_slot = %s\n", name_slot);
+			/* matched */
 	part_drv = part_driver_lookup_type(dev_desc);
 	if (!part_drv)
 		return -1;
@@ -726,6 +729,8 @@ lookup:
 			break;
 		}
 		if (strcmp(name_slot, (const char *)info->name) == 0) {
+			printf("name_slot = %s\n", name_slot);
+			printf("name_slot = %s\n", info->name);
 			/* matched */
 			return i;
 		}
