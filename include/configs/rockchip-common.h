@@ -128,7 +128,8 @@
 	"name=misc,size=4MB,uuid=${uuid_gpt_misc};" \
 	"name=resource,size=16MB,uuid=${uuid_gpt_resource};" \
 	"name=kernel,size=32M,uuid=${uuid_gpt_kernel};" \
-	"name=boot,size=32M,bootable,uuid=${uuid_gpt_boot};" \
+	"name=boot_a,size=32M,bootable,uuid=${uuid_gpt_boot};" \
+	"name=boot_b,size=32M,bootable,uuid=${uuid_gpt_boot};" \
 	"name=recovery,size=32M,uuid=${uuid_gpt_recovery};" \
 	"name=backup,size=112M,uuid=${uuid_gpt_backup};" \
 	"name=cache,size=512M,uuid=${uuid_gpt_cache};" \
