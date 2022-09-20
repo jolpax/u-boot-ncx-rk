@@ -890,7 +890,8 @@ int android_image_load_by_partname(struct blk_desc *dev_desc,
 	disk_partition_t boot_part;
 	int ret, part_num;
 
-	part_num = part_get_info_by_name(dev_desc, boot_partname, &boot_part);
+	//part_num = part_get_info_by_name(dev_desc, boot_partname, &boot_part);
+	part_num = part_get_info_by_name(dev_desc, "boot_a", &boot_part);
 	if (part_num < 0) {
 		printf("%s: Can't find part: %s\n", __func__, boot_partname);
 		return -1;
