@@ -712,8 +712,10 @@ static int part_get_info_by_name_option(struct blk_desc *dev_desc,
 	printf("zname_slot = %s\n", name_slot);
 #if defined(CONFIG_ANDROID_AB) && !defined(CONFIG_SPL_BUILD)
 	/* 1. Query partition with A/B slot suffix */
-	if (rk_avb_append_part_slot(name, name_slot))
-		return -1;
+	//if (rk_avb_append_part_slot(name, name_slot))
+	//	return -1;
+	name = "boot";
+	name_slot = "_a";
 #elif defined(CONFIG_SPL_AB) && defined(CONFIG_SPL_BUILD)
 	if (spl_ab_append_part_slot(dev_desc, name, name_slot))
 		return -1;
