@@ -9,7 +9,7 @@
 
 #include <configs/rk3568_common.h>
 
-#define CONFIG_SYS_MMC_ENV_DEV		0
+#define CONFIG_SYS_MMC_ENV_DEV		1
 #undef CONFIG_ENV_OFFSET
 #undef CONFIG_ENV_SIZE
 #define CONFIG_ENV_OFFSET                    0x003f8000
