@@ -12,9 +12,9 @@
 #define CONFIG_SYS_MMC_ENV_DEV		1
 #undef CONFIG_ENV_OFFSET
 #undef CONFIG_ENV_SIZE
-#define CONFIG_ENV_OFFSET                    0x003f8000
-#define CONFIG_ENV_SIZE                         0x40000
-
+#define CONFIG_ENV_OFFSET                    0x00000
+#define CONFIG_ENV_SIZE                         0x2000
+#define CONFIG_SYS_MMC_ENV_PART         0
 
 #ifndef CONFIG_SPL_BUILD
 
