@@ -24,7 +24,7 @@
 		"stdout=serial,vidconsole\0" \
 		"stderr=serial,vidconsole\0"
 
-#define CONFIG_SYS_MMC_ENV_DEV		0
+#define CONFIG_SYS_MMC_ENV_DEV		1
 
 #undef CONFIG_BOOTCOMMAND
 #define CONFIG_BOOTCOMMAND RKIMG_BOOTCOMMAND
