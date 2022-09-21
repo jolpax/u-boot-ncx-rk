@@ -483,6 +483,9 @@ int rk_avb_append_part_slot(const char *part_name, char *new_name)
 {
 	char slot_suffix[3] = {0};
 
+	printf("%s\n", __func__);
+	printf("part_name = %s\n", part_name);
+	printf("new_name = %s\n", new_name);
 	if (!strcmp(part_name, "misc")) {
 		strcat(new_name, part_name);
 		return 0;

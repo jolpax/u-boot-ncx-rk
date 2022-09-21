@@ -689,8 +689,6 @@ static int part_get_info_by_name_option(struct blk_desc *dev_desc,
 	int none_slot_try = 1;
 	int ret, i;
 
-	printf("info_slot = %s\n", info->name);
-	printf("name_slot = %s\n", name_slot);
 			/* matched */
 	part_drv = part_driver_lookup_type(dev_desc);
 	if (!part_drv)
@@ -710,6 +708,8 @@ static int part_get_info_by_name_option(struct blk_desc *dev_desc,
 	    !memcmp(name_suffix, "_b", strlen("_b")))
 		memset(name_suffix, 0, 2);
 #endif
+	printf("zinfo_slot = %s\n", info->name);
+	printf("zname_slot = %s\n", name_slot);
 #if defined(CONFIG_ANDROID_AB) && !defined(CONFIG_SPL_BUILD)
 	/* 1. Query partition with A/B slot suffix */
 	if (rk_avb_append_part_slot(name, name_slot))
