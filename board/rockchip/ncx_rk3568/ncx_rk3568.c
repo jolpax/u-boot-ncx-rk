@@ -103,7 +103,7 @@ int ncx_rk3568_board_late_init(void)
 		eth_env_set_enetaddr("eth1addr", ethaddr);
 	}
 
-	avb_ab_mark_slot_successful(ops,slot_index);
+	avb_ab_mark_slot_successful(&ops,slot_index);
 
 	return 0;
 }
