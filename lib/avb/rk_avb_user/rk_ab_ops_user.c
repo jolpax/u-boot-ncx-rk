@@ -357,7 +357,7 @@ AvbABFlowResult rk_avb_ab_slot_select(AvbABOps* ab_ops,char* select_slot)
 		printf("zahid\n");
 		ab_data.slots[slot_index_to_boot].tries_remaining	= AVB_AB_MAX_TRIES_REMAINING;
 		printf("zahid1\n");
-		ab_ops->write_ab_metadata(ab_ops, ab_data);
+		ab_ops->write_ab_metadata(ab_ops, &ab_data);
 	}
 out:
 	return ret;
