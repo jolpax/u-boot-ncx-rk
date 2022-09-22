@@ -10,6 +10,7 @@
 #include <dm.h>
 #include <i2c_eeprom.h>
 #include <netdev.h>
+#include <android_avb/rk_avb_ops_user.h>
 
 #define RK3568_MAC_EEPROM_DEBUG    0
 #define AT24_MAC_OFFSET                      0x9A
