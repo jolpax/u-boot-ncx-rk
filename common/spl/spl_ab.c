@@ -248,7 +248,8 @@ int spl_get_current_slot(struct blk_desc *dev_desc, char *partition, char *slot)
 		printf("spl :zahid\n");
 		ab_data.slots[slot_index_to_boot].tries_remaining	= AVB_AB_MAX_TRIES_REMAINING;
 		printf("spl :zahid1\n");
-		ab_ops->write_ab_metadata(ab_ops, &ab_data);
+		spl_ab_data_write(dev_desc, ab_data, partition);
+
 	}
 
 out:
