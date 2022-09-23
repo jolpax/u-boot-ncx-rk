@@ -10,7 +10,6 @@
 #include <dm.h>
 #include <i2c_eeprom.h>
 #include <netdev.h>
-#include <android_avb/rk_avb_ops_user.h>
 
 #define RK3568_MAC_EEPROM_DEBUG    0
 #define AT24_MAC_OFFSET                      0x9A
@@ -68,28 +67,7 @@ static int get_ethaddr_from_eeprom(u8 *addr)
 
 int ncx_rk3568_board_late_init(void)
 {
-	AvbABData ab_data_orig;
-	AvbABData ab_data;
-	char slot_suffix[3] = {0};
-	AvbOps *ops;
-	size_t slot_index = 0;
 	u8 ethaddr[6];
-
-	if (ab_get_slot_suffix(slot_suffix))
-		return -1;
-
-	if (!strncmp(slot_suffix, "_a", 2))
-		slot_index = 0;
-	else if (!strncmp(slot_suffix, "_b", 2))
-		slot_index = 1;
-	else
-		slot_index = 0;
-
-	ops = avb_ops_user_new();
-	if (!ops) {
-		printf("avb_ops_user_new() failed!\n");
-		return -1;
-	}
 
 	if (get_ethaddr_from_eeprom(ethaddr))
 	{
@@ -102,8 +80,6 @@ int ncx_rk3568_board_late_init(void)
 #endif
 		eth_env_set_enetaddr("eth1addr", ethaddr);
 	}
-
-	avb_ab_mark_slot_successful(&ops,slot_index);
 
 	return 0;
 }
