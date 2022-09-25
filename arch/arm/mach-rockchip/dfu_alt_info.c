@@ -28,7 +28,6 @@ static char *get_dfu_alt(char *interface, char *devstr)
 #ifdef CONFIG_MMC
 	case IF_TYPE_MMC:
 		alt_boot = DFU_ALT_BOOT_EMMC;
-		printf("zcheck1\n");
 		break;
 #endif
 #ifdef CONFIG_MTD_BLK
