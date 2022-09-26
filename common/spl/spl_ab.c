@@ -101,10 +101,12 @@ static void spl_ab_data_init(AvbABData *data)
 	data->version_minor = AVB_AB_MINOR_VERSION;
 	data->last_boot = 0;
 	data->slots[0].priority = AVB_AB_MAX_PRIORITY;
-	data->slots[0].tries_remaining = AVB_AB_MAX_TRIES_REMAINING;
+	//data->slots[0].tries_remaining = AVB_AB_MAX_TRIES_REMAINING;
+	data->slots[0].tries_remaining = 3;
 	data->slots[0].successful_boot = 0;
 	data->slots[1].priority = AVB_AB_MAX_PRIORITY - 1;
-	data->slots[1].tries_remaining = AVB_AB_MAX_TRIES_REMAINING;
+	//data->slots[1].tries_remaining = AVB_AB_MAX_TRIES_REMAINING;
+	data->slots[1].tries_remaining = 3;
 	data->slots[1].successful_boot = 0;
 }
 
