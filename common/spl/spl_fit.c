@@ -793,12 +793,12 @@ int spl_load_simple_fit(struct spl_image_info *spl_image,
 	int ret = -EINVAL;
 	int i;
 
-	printf("Trying fit image at 0x%lx sector\n", sector_offs);
+	printf("Trying2 fit image at 0x%lx sector\n", sector_offs);
 	for (i = 0; i < CONFIG_SPL_FIT_IMAGE_MULTIPLE; i++) {
 		if (i > 0) {
 			sector_offs +=
 			   i * ((CONFIG_SPL_FIT_IMAGE_KB << 10) / info->bl_len);
-			printf("Trying fit image at 0x%lx sector\n", sector_offs);
+			printf("Trying2 fit image at 0x%lx sector\n", sector_offs);
 			if (info->read(info, sector_offs, 1, fit) != 1) {
 				printf("IO error\n");
 				continue;
