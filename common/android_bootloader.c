@@ -393,7 +393,7 @@ char *android_assemble_cmdline(const char *slot_suffix,
 {
 	const char *cmdline_chunks[16];
 	const char **current_chunk = cmdline_chunks;
-	char *env_cmdline, *cmdline, *rootdev_input, *serialno;
+	char *env_cmdline, *cmdline, *rootdev_input, *serialno, *env_slot;
 	char *allocated_suffix = NULL;
 	char *allocated_serialno = NULL;
 	char *allocated_rootdev = NULL;
@@ -413,7 +413,11 @@ char *android_assemble_cmdline(const char *slot_suffix,
 		memset(allocated_suffix, 0, strlen(ANDROID_ARG_SLOT_SUFFIX)
 		       + strlen(slot_suffix) + 1);
 		strcpy(allocated_suffix, ANDROID_ARG_SLOT_SUFFIX);
-		strcat(allocated_suffix, slot_suffix);
+		env_slot = "_";
+		strcat(env_slot, env_get("slot"));
+		strcat(allocated_suffix, env_slot);
+		printf("zdone.\n");
+		//strcat(allocated_suffix, slot_suffix);
 		*(current_chunk++) = allocated_suffix;
 	}
 #endif
