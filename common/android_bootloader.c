@@ -416,7 +416,7 @@ char *android_assemble_cmdline(const char *slot_suffix,
 		env_slot = "_";
 		strcat(env_slot, env_get("slot"));
 		strcat(allocated_suffix, env_slot);
-		printf("zdone.\n");
+		printf("Selecting slot%s to boot\n",env_slot);
 		//strcat(allocated_suffix, slot_suffix);
 		*(current_chunk++) = allocated_suffix;
 	}
