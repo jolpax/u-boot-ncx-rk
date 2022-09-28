@@ -13,8 +13,8 @@
 #undef CONFIG_ENV_OFFSET
 #undef CONFIG_ENV_SIZE
 
-#define CONFIG_ENV_OFFSET                       0x0016c000
-#define CONFIG_ENV_SIZE                         0x20000
+#define CONFIG_ENV_OFFSET                       0x0000a000
+#define CONFIG_ENV_SIZE                         0x40000
 /*#define CONFIG_SYS_MMC_ENV_PART				 	3*/
 #undef  CONFIG_ENV_SIZE_REDUND					CONFIG_ENV_SIZE
 
