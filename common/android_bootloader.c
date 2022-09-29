@@ -903,12 +903,12 @@ int android_image_load_by_partname(struct blk_desc *dev_desc,
 		printf("%s: Can't find part: %s\n", __func__, boot_partname);
 		return -1;
 	}
-	debug("ANDROID: Loading kernel from \"%s\", partition %d.\n",
+	printf("ANDROID: Loading kernel from \"%s\", partition %d.\n",
 	      boot_part.name, part_num);
 
 	ret = android_image_load(dev_desc, &boot_part, *load_address, -1UL);
 	if (ret < 0) {
-		debug("%s: %s part load fail, ret=%d\n",
+		printf("%s: %s part load fail, ret=%d\n",
 		      __func__, boot_part.name, ret);
 		return ret;
 	}
