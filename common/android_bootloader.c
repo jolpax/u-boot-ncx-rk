@@ -895,6 +895,10 @@ int android_image_load_by_partname(struct blk_desc *dev_desc,
 	int ret, part_num;
 
 	part_num = part_get_info_by_name(dev_desc, boot_partname, &boot_part);
+
+	printf("Zahid6 : Getting the env here %s\n", env_get("slot"));
+	printf("Zahid 6 : boot_partname = %s\n",boot_partname );
+
 	if (part_num < 0) {
 		printf("%s: Can't find part: %s\n", __func__, boot_partname);
 		return -1;
