@@ -1021,7 +1021,7 @@ int android_bootloader_boot_flow(struct blk_desc *dev_desc,
 						 ANDROID_PARTITION_VBMETA,
 						 &vbmeta_part_info);
 		if (part_num < 0) {
-			printf("Not AVB images, AVB skip\n");
+			printf("Not AVB images, AVB skip.. %s\n", boot_partname);
 			env_update("bootargs",
 				   "androidboot.verifiedbootstate=orange");
 			if (android_image_load_by_partname(dev_desc,
