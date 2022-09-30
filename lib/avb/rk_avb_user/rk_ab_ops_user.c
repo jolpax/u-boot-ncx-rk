@@ -451,7 +451,7 @@ int rk_avb_get_current_slot(char *select_slot)
 		printf("avb_ops_user_new() failed!\n");
 		return -1;
 	}
-
+	printf("zahid 11 : %s\n", env_get("slot"));
 	if (rk_avb_ab_slot_select(ops->ab_ops, select_slot) != 0) {
 #ifndef CONFIG_ANDROID_AVB
 		printf("###There is no bootable slot, bring up last_boot!###\n");
