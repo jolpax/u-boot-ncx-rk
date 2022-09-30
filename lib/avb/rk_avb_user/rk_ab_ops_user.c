@@ -363,7 +363,7 @@ AvbABFlowResult rk_avb_ab_slot_select(AvbABOps* ab_ops,char* select_slot)
 	{
 		sprintf(select_slot, "_%s",env_get("slot") );
 		printf("zahid 14 :slect_slot =%s\n", select_slot);
-		if( ab_data.slots[slot_index_to_boot].tries_remaining == 0)
+		if( ab_data.slots[slot_index_to_boot].tries_remaining == 1)
 		{
 			if (!strcmp(env_get("slot"), "a"))
 			{
