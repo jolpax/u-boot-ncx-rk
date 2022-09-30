@@ -342,6 +342,12 @@ AvbABFlowResult rk_avb_ab_slot_select(AvbABOps* ab_ops,char* select_slot)
 		goto out;
 	}
 
+	printf("zahid 12 : %s\n", env_get("slot"));
+
+	if (env_get("slot") != NULL)
+	{
+		sprintf(select_slot, "_%s",env_get("slot") );
+	}
 	if (slot_index_to_boot == 0) {
 		strcpy(select_slot, "_a");
 	} else if(slot_index_to_boot == 1) {
