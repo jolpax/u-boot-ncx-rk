@@ -344,14 +344,17 @@ AvbABFlowResult rk_avb_ab_slot_select(AvbABOps* ab_ops,char* select_slot)
 
 	printf("zahid 12 : %s\n", env_get("slot"));
 
-	if (env_get("slot") != NULL)
-	{
-		sprintf(select_slot, "_%s",env_get("slot") );
-	}
+
 	if (slot_index_to_boot == 0) {
 		strcpy(select_slot, "_a");
 	} else if(slot_index_to_boot == 1) {
 		strcpy(select_slot, "_b");
+	}
+	printf("zahid 13 : %s\n", env_get("slot"));
+	if (env_get("slot") != NULL)
+	{
+		sprintf(select_slot, "_%s",env_get("slot") );
+		printf("zahid 14 :slect_slot =%s\n", select_slot);
 	}
 
 	if (last_slot_index != slot_index_to_boot) {
