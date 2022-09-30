@@ -339,7 +339,15 @@ AvbABFlowResult rk_avb_ab_slot_select(AvbABOps* ab_ops,char* select_slot)
 	} else {
 		printf("No bootable slots found.\n");
 		ret = AVB_AB_FLOW_RESULT_ERROR_NO_BOOTABLE_SLOTS;
-		goto out;
+			if (!strcmp(env_get("slot"), "a"))
+			{
+				strcpy(select_slot, "_b");
+			}
+			else
+			{
+				strcpy(select_slot, "_a");
+			}
+		//goto out;
 	}
 
 	printf("zahid 12 : %s\n", env_get("slot"));
