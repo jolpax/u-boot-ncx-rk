@@ -393,7 +393,7 @@ char *android_assemble_cmdline(const char *slot_suffix,
 {
 	const char *cmdline_chunks[16];
 	const char **current_chunk = cmdline_chunks;
-	char *env_cmdline, *cmdline, *rootdev_input, *serialno;
+	char *env_cmdline, *cmdline, *rootdev_input, *serialno, *env_slot;
 	char *allocated_suffix = NULL;
 	char *allocated_serialno = NULL;
 	char *allocated_rootdev = NULL;
@@ -413,7 +413,11 @@ char *android_assemble_cmdline(const char *slot_suffix,
 		memset(allocated_suffix, 0, strlen(ANDROID_ARG_SLOT_SUFFIX)
 		       + strlen(slot_suffix) + 1);
 		strcpy(allocated_suffix, ANDROID_ARG_SLOT_SUFFIX);
-		strcat(allocated_suffix, slot_suffix);
+		env_slot = "_";
+		strcat(env_slot, env_get("slot"));
+		strcat(allocated_suffix, env_slot);
+		printf("Selecting slot%s to boot\n",env_slot);
+		//strcat(allocated_suffix, slot_suffix);
 		*(current_chunk++) = allocated_suffix;
 	}
 #endif
@@ -891,16 +895,20 @@ int android_image_load_by_partname(struct blk_desc *dev_desc,
 	int ret, part_num;
 
 	part_num = part_get_info_by_name(dev_desc, boot_partname, &boot_part);
+
+	printf("Zahid6 : Getting the env here %s\n", env_get("slot"));
+	printf("Zahid 6 : boot_partname = %s\n",boot_partname );
+
 	if (part_num < 0) {
 		printf("%s: Can't find part: %s\n", __func__, boot_partname);
 		return -1;
 	}
-	debug("ANDROID: Loading kernel from \"%s\", partition %d.\n",
+	printf("ANDROID: Loading kernel from \"%s\", partition %d.\n",
 	      boot_part.name, part_num);
 
 	ret = android_image_load(dev_desc, &boot_part, *load_address, -1UL);
 	if (ret < 0) {
-		debug("%s: %s part load fail, ret=%d\n",
+		printf("%s: %s part load fail, ret=%d\n",
 		      __func__, boot_part.name, ret);
 		return ret;
 	}
@@ -1017,7 +1025,7 @@ int android_bootloader_boot_flow(struct blk_desc *dev_desc,
 						 ANDROID_PARTITION_VBMETA,
 						 &vbmeta_part_info);
 		if (part_num < 0) {
-			printf("Not AVB images, AVB skip\n");
+			printf("Not AVB images, AVB skip.. %s\n", boot_partname);
 			env_update("bootargs",
 				   "androidboot.verifiedbootstate=orange");
 			if (android_image_load_by_partname(dev_desc,
