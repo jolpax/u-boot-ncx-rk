@@ -339,38 +339,29 @@ AvbABFlowResult rk_avb_ab_slot_select(AvbABOps* ab_ops,char* select_slot)
 	} else {
 		printf("No bootable slots found.\n");
 		ret = AVB_AB_FLOW_RESULT_ERROR_NO_BOOTABLE_SLOTS;
-			if (!strcmp(env_get("slot"), "a"))
-			{
-				strcpy(select_slot, "_b");
-			}
-			else
-			{
-				strcpy(select_slot, "_a");
-			}
-		//goto out;
+		if (!strcmp(env_get("slot"), "a")) {
+			strcpy(select_slot, "_b");
+		}
+		else {
+			strcpy(select_slot, "_a");
+		}
 	}
-
-	printf("zahid 12 : %s\n", env_get("slot"));
-
 
 	if (slot_index_to_boot == 0) {
 		strcpy(select_slot, "_a");
 	} else if(slot_index_to_boot == 1) {
 		strcpy(select_slot, "_b");
 	}
-	printf("zahid 13 : %s\n", env_get("slot"));
+	
 	if (env_get("slot") != NULL)
 	{
 		sprintf(select_slot, "_%s",env_get("slot") );
-		printf("zahid 14 :slect_slot =%s\n", select_slot);
 		if( ab_data.slots[slot_index_to_boot].tries_remaining == 1)
 		{
-			if (!strcmp(env_get("slot"), "a"))
-			{
+			if (!strcmp(env_get("slot"), "a")) {
 				strcpy(select_slot, "_b");
 			}
-			else
-			{
+			else {
 				strcpy(select_slot, "_a");
 			}
 		}
@@ -479,7 +470,6 @@ int rk_avb_get_current_slot(char *select_slot)
 		printf("avb_ops_user_new() failed!\n");
 		return -1;
 	}
-	printf("zahid 11 : %s\n", env_get("slot"));
 	if (rk_avb_ab_slot_select(ops->ab_ops, select_slot) != 0) {
 #ifndef CONFIG_ANDROID_AVB
 		printf("###There is no bootable slot, bring up last_boot!###\n");

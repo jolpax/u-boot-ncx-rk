@@ -1025,7 +1025,6 @@ void board_quiesce_devices(void *images)
 #endif
 	/* relocate kernel after decompress cleanup */
 	kernel_addr = env_get_ulong("kernel_addr_r", 16, 0);
-	printf("z: kernel_addr = %ld\n ", kernel_addr);
 	if (kernel_addr != bootm_images->ep) {
 		memmove((char *)bootm_images->ep, (const char *)kernel_addr,
 			bootm_images->os.image_len);
