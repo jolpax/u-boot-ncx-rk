@@ -1097,7 +1097,7 @@ int android_bootloader_boot_flow(struct blk_desc *dev_desc,
 #endif
 
 	printf("Setting the slot env for the fresh board\n");
-	if (!strcmp(env_get("slot"), "") && strcmp(env_get("fresh_board"), "no") ) {
+	if (!strcmp(env_get("slot"), NULL) && !strcmp(env_get("fresh_board"), NULL) ) {
 		printf("Setting the slot env for the fresh board.\n");
 		env_set("slot", "a");
 		env_set("fresh_board", "no");
