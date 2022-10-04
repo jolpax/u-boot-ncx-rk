@@ -1096,15 +1096,13 @@ int android_bootloader_boot_flow(struct blk_desc *dev_desc,
 		printf("Close optee client failed!\n");
 #endif
 
-	printf("Setting the slot env for the fresh board\n");
+	/*Saving the slot info for the fresh board*/
 	if (!strcmp(env_get("slot"), NULL) && !strcmp(env_get("fresh_board"), NULL) ) {
 		printf("Setting the slot env for the fresh board.\n");
 		env_set("slot", "a");
 		env_set("fresh_board", "no");
 		env_save();
-
 	}
-
 
 #ifdef CONFIG_AMP
 	return android_bootloader_boot_kernel(load_address);
