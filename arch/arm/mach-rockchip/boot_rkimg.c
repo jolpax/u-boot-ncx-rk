@@ -529,6 +529,7 @@ enum {
 
 static int rkimg_traverse_read_dtb(void *fdt, int where)
 {
+	printf("hello 22");
 	if (where == LOCATE_DISTRO) {
 #ifdef CONFIG_ROCKCHIP_EARLY_DISTRO_DTB
 		return rockchip_read_distro_dtb(fdt);
@@ -539,6 +540,7 @@ static int rkimg_traverse_read_dtb(void *fdt, int where)
 		char *hash;
 		u32 ret;
 
+	printf("hello 23");
 		ret = rockchip_read_resource_dtb(fdt, &hash, &hash_size);
 		if (ret) {
 			printf("Failed to load DTB, ret=%d\n", ret);
@@ -576,7 +578,7 @@ int rockchip_read_dtb_file(void *fdt)
 #ifdef CONFIG_ROCKCHIP_RESOURCE_IMAGE
 	resource_traverse_init_list();
 #endif
-
+	printf("hello 21");
 	/* traverse location */
 	for (locate = 0; locate < LOCATE_END; locate++) {
 		ret = rkimg_traverse_read_dtb(fdt, locate);

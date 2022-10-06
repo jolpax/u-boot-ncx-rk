@@ -267,6 +267,7 @@ struct resource_file *resource_read_hwid_dtb(void)
 
 	hwid_init_data();
 
+	printf("hello 33");
 	if (list_empty(&entrys_head)) {
 		if (resource_init_list())
 			return NULL;

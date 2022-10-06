@@ -556,7 +556,10 @@ int rockchip_read_resource_dtb(void *fdt_addr, char **hash, int *hash_size)
 #endif
 	/* If no dtb matches hardware id(GPIO/ADC), use the default */
 	if (!file)
+	{
+		printf("Hello 31\n");
 		file = get_default_dtb();
+	}
 
 	if (!file)
 		return -ENODEV;

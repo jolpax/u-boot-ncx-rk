@@ -315,14 +315,15 @@ int init_kernel_dtb(void)
 		printf("No Found FDT Load Address.\n");
 		return -ENODEV;
 	}
-
+	printf("1. %s\n", env_get("slot"));
 	if (IS_ENABLED(CONFIG_EMBED_KERNEL_DTB_ALWAYS)) {
 		printf("Always embed kernel dtb\n");
 		goto dtb_embed;
 	}
-
+	printf("2. %s\n", env_get("slot"));
 	ret = rockchip_read_dtb_file((void *)fdt_addr);
 	if (!ret) {
+		printf("Hello 11\n");
 		if (!dtb_check_ok((void *)fdt_addr, (void *)gd->fdt_blob)) {
 			ret = -EINVAL;
 			printf("Kernel dtb mismatch this platform!\n");
@@ -330,14 +331,15 @@ int init_kernel_dtb(void)
 			goto dtb_okay;
 		}
 	}
-
+	printf("Hello 12\n");
 dtb_embed:
 	if (gd->fdt_blob_kern) {
+		printf("Hello 13\n");
 		if (!dtb_check_ok((void *)gd->fdt_blob_kern, (void *)gd->fdt_blob)) {
 			printf("Embedded kernel dtb mismatch this platform!\n");
 			return -EINVAL;
 		}
-
+		printf("Hello 14\n");
 		fdt_addr = (ulong)memalign(ARCH_DMA_MINALIGN,
 				fdt_totalsize(gd->fdt_blob_kern));
 		if (!fdt_addr)
