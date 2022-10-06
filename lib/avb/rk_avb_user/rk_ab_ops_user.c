@@ -348,15 +348,17 @@ AvbABFlowResult rk_avb_ab_slot_select(AvbABOps* ab_ops,char* select_slot)
 	}
 
 	if (slot_index_to_boot == 0) {
-		strcpy(select_slot, "_a");
+		 sprintf(select_slot, "_%s",env_get("slot") );
+		//strcpy(select_slot, "_a");
 	} else if(slot_index_to_boot == 1) {
-		strcpy(select_slot, "_b");
+		sprintf(select_slot, "_%s",env_get("slot") );
+		//strcpy(select_slot, "_b");
 	}
 	
 	if (env_get("slot") != NULL)
 	{
 		sprintf(select_slot, "_%s",env_get("slot") );
-		if( ab_data.slots[slot_index_to_boot].tries_remaining == 1)
+		if( ab_data.slots[slot_index_to_boot].tries_remaining == 4)
 		{
 			if (!strcmp(env_get("slot"), "a")) {
 				strcpy(select_slot, "_b");
