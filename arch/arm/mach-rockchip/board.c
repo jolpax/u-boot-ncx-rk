@@ -473,6 +473,7 @@ int board_init(void)
 	board_mtd_blk_map_partitions();
 #endif
 	printf("Hello 4\n");
+	printf("%s\n", env_get("slot"));
 	init_kernel_dtb();
 #endif
 	printf("Hello 5\n");
