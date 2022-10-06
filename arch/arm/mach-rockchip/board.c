@@ -456,19 +456,23 @@ static void board_mtd_blk_map_partitions(void)
 int board_init(void)
 {
 	board_debug_init();
+	printf("Hello 1\n");
 	/* optee select security level */
 #ifdef CONFIG_OPTEE_CLIENT
 	trusty_select_security_level();
 #endif
 
 #ifdef DEBUG
+	printf("Hello 2\n");
 	soc_clk_dump();
 #endif
 
 #ifdef CONFIG_USING_KERNEL_DTB
 #ifdef CONFIG_MTD_BLK
+	printf("Hello 3\n");
 	board_mtd_blk_map_partitions();
 #endif
+	printf("Hello 4\n");
 	init_kernel_dtb();
 #endif
 	early_download();
