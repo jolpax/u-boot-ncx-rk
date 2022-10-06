@@ -475,19 +475,23 @@ int board_init(void)
 	printf("Hello 4\n");
 	init_kernel_dtb();
 #endif
+	printf("Hello 5\n");
 	early_download();
 
 	/*
 	 * pmucru isn't referenced on some platforms, so pmucru driver can't
 	 * probe that the "assigned-clocks" is unused.
 	 */
+	printf("Hello 6\n");
 	clks_probe();
 #ifdef CONFIG_DM_REGULATOR
+	printf("Hello 7\n");
 	if (regulators_enable_boot_on(is_hotkey(HK_REGULATOR)))
 		debug("%s: Can't enable boot on regulator\n", __func__);
 #endif
 
 #ifdef CONFIG_ROCKCHIP_IO_DOMAIN
+	printf("Hello 7\n");
 	io_domain_init();
 #endif
 
