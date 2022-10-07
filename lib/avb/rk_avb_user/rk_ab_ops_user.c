@@ -350,17 +350,26 @@ AvbABFlowResult rk_avb_ab_slot_select(AvbABOps* ab_ops,char* select_slot)
 	if (slot_index_to_boot == 0) {
 		printf("slot 0 chosen\n");
 		printf("Slot Env = %s\n", env_get("slot"));
-		if (strcmp( env_get("slot"), "NULL" ))
+		if (strcmp( env_get("slot"), "<NULL>" )) {
 			printf("env is not null 1\n");
-		 	sprintf(select_slot, "_%s",env_get("slot") );
-		strcpy(select_slot, "_a");
-	} else if(slot_index_to_boot == 1) {
+			sprintf(select_slot, "_%s",env_get("slot") );
+		}
+		else {
+			printf("Copying string a to slot\n");
+			strcpy(select_slot, "_a");
+		}
+	}
+		else if(slot_index_to_boot == 1) {
 		printf("slot 1 chosen\n");
 		printf("Slot Env = %s\n", env_get("slot"));
-		if (strcmp( env_get("slot"), "NULL" ))
+		if (strcmp( env_get("slot"), "<NULL>" )) {
 			printf("env is not null 2\n");
 			sprintf(select_slot, "_%s",env_get("slot") );
-		strcpy(select_slot, "_b");
+		}
+		else {
+			printf("Copying string b to slot\n");
+			strcpy(select_slot, "_b");
+		}
 	}
 	
 	if (env_get("slot") != NULL)
