@@ -170,6 +170,7 @@
 	"boot_fit;"
 #else
 #define RKIMG_BOOTCOMMAND			\
+	"run banksel;" 				\
 	"boot_android ${devtype} ${devnum};"	\
 	"boot_fit;"				\
 	"bootrkp;"				\

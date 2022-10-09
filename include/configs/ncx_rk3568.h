@@ -9,6 +9,14 @@
 
 #include <configs/rk3568_common.h>
 
+/*This will change for sd card*/
+#define CONFIG_SYS_MMC_ENV_DEV				0
+#undef CONFIG_ENV_OFFSET
+#undef CONFIG_ENV_SIZE
+
+#define CONFIG_ENV_OFFSET                    0x003f8000
+#define CONFIG_ENV_SIZE                         0x40000
+
 #ifndef CONFIG_SPL_BUILD
 
 #undef ROCKCHIP_DEVICE_SETTINGS

@@ -718,7 +718,7 @@ static int part_get_info_by_name_option(struct blk_desc *dev_desc,
 	strcpy(name_slot, name);
 #endif
 lookup:
-	debug("## Query partition(%d): %s\n", none_slot_try, name_slot);
+	printf("## Query partition(%d): %s\n", none_slot_try, name_slot);
 	for (i = 1; i < part_drv->max_entries; i++) {
 		ret = part_drv->get_info(dev_desc, i, info);
 		if (ret != 0) {

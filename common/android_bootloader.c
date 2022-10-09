@@ -895,12 +895,12 @@ int android_image_load_by_partname(struct blk_desc *dev_desc,
 		printf("%s: Can't find part: %s\n", __func__, boot_partname);
 		return -1;
 	}
-	debug("ANDROID: Loading kernel from \"%s\", partition %d.\n",
+	printf("ANDROID: Loading kernel from \"%s\", partition %d.\n",
 	      boot_part.name, part_num);
 
 	ret = android_image_load(dev_desc, &boot_part, *load_address, -1UL);
 	if (ret < 0) {
-		debug("%s: %s part load fail, ret=%d\n",
+		printf("%s: %s part load fail, ret=%d\n",
 		      __func__, boot_part.name, ret);
 		return ret;
 	}
@@ -1017,7 +1017,7 @@ int android_bootloader_boot_flow(struct blk_desc *dev_desc,
 						 ANDROID_PARTITION_VBMETA,
 						 &vbmeta_part_info);
 		if (part_num < 0) {
-			printf("Not AVB images, AVB skip\n");
+			printf("Not AVB images, AVB skip.. %s\n", boot_partname);
 			env_update("bootargs",
 				   "androidboot.verifiedbootstate=orange");
 			if (android_image_load_by_partname(dev_desc,
@@ -1087,6 +1087,14 @@ int android_bootloader_boot_flow(struct blk_desc *dev_desc,
 	if (trusty_notify_optee_uboot_end())
 		printf("Close optee client failed!\n");
 #endif
+
+	/*Saving the slot info for the fresh board*/
+	if (!strcmp(env_get("slot"), NULL) && !strcmp(env_get("fresh_board"), NULL) ) {
+		printf("Setting the slot env for the fresh board.\n");
+		env_set("slot", "a");
+		env_set("fresh_board", "no");
+		env_save();
+	}
 
 #ifdef CONFIG_AMP
 	return android_bootloader_boot_kernel(load_address);
