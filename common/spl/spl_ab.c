@@ -241,7 +241,7 @@ int spl_get_current_slot(struct blk_desc *dev_desc, char *partition, char *slot)
 
 	if (last_slot_index != slot_index_to_boot) {
 		last_slot_index = slot_index_to_boot;
-		printf("SPL: A/B-slot: %s, successful: %d, tries-remain: %d\n",
+		printf("Failsafe SPL: A/B-slot: %s, successful: %d, tries-remain: %d\n",
 		       slot,
 		       ab_data.slots[slot_index_to_boot].successful_boot,
 		       ab_data.slots[slot_index_to_boot].tries_remaining);
